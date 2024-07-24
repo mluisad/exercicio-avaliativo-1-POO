@@ -3,7 +3,7 @@ public class ACMESports {
 
     }
     
-    public void execute(){
-        System.out.println("hello");
+    public void executar(){
+        System.out.println("teste");
     }
 }
