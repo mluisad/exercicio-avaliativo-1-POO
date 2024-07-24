@@ -1,5 +1,6 @@
 public class Main{
     public static void main(String[] args) throws Exception {
-        System.out.println("Hello, World!");
+        ACMESports acmes = new ACMESports();
+        acmes.execute();
     }
 }
