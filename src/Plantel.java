@@ -2,23 +2,35 @@
 import java.util.ArrayList;
 
 public class Plantel {
-    ArrayList<Atleta> atleta;
+    ArrayList<Atleta> atletas;
 
     public Plantel(){
-        atleta = new ArrayList<>();
+        atletas = new ArrayList<>();
     }
 
     public boolean cadastraAtleta(Atleta atleta){
+        if(consultaAtleta(atleta.getNumero()) != null){
+            return false;
+        }
+        atletas.add(atleta);
         return true;
     }
 
     public Atleta consultaAtleta(String nome){
-        Atleta a = new Atleta(0, null, null);
-        return a;
+        for(Atleta a : atletas){
+            if(a.getNome().equals(nome)){
+                return a;
+            }
+        }
+        return null;
     }
 
     public Atleta consultaAtleta(int numero){
-        Atleta a = new Atleta(numero, null, null);
-        return a;
+        for(Atleta a : atletas){
+           if(a.getNumero() == numero){
+            return a;
+           } 
+        }
+        return null;
     }
 }

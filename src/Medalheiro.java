@@ -9,16 +9,29 @@ public class Medalheiro {
     }
 
     public boolean cadastraMedalha(Medalha m){
+        if(consultaMedalha(m.getCodigo()) != null){
+            return false;
+        }
+        medalha.add(m);
         return true;
-    }
+    }   
 
     public Medalha consultaMedalha(int codigo){
-        Medalha m = new Medalha(0, 0, false, null);
-        return m;
+        for(Medalha m : medalha){
+            if(m.getCodigo() == codigo){
+                return m;
+            }
+        }
+        return null;
     }
 
     public ArrayList<Medalha> consultaMedalhas(String modalidade){
-        ArrayList<Medalha> m = new ArrayList<>();
-        return m;        
+        ArrayList<Medalha> consulta = new ArrayList<>();
+        for(Medalha m : medalha){
+            if(m.getModalidade().equals(modalidade)){
+                consulta.add(m);
+            }
+        }        
+        return consulta;
     }
 }
