@@ -33,4 +33,12 @@ public class Plantel {
         }
         return null;
     }
+
+    public void retornaAtleta(String nome){
+        for(Atleta a : atletas){
+            if(a.getNome().equals(nome)){
+                System.out.println(a.toString());
+            }
+        }
+    }  
 }

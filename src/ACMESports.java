@@ -11,14 +11,17 @@ public class ACMESports {
     private PrintStream saidaPadrao = System.out;
     
     private Medalheiro medalheiro; 
+    private Medalha medalha;
     private Plantel plantel;
+    private Atleta atleta;
+
 
     public ACMESports(){
         medalheiro = new Medalheiro();
         plantel = new Plantel();
         
         try{
-			BufferedReader streamEntrada = new BufferedReader(new FileReader("dadosin2.txt"));
+			BufferedReader streamEntrada = new BufferedReader(new FileReader("dadosin3.txt"));
 			in = new Scanner(streamEntrada);
 			PrintStream streamSaida = new PrintStream(new File("dadosout.txt"), Charset.forName("UTF-8"));
 			System.setOut(streamSaida);
@@ -30,6 +33,46 @@ public class ACMESports {
     }
     
     public void executar(){
-        System.out.println("teste");
+        cadastrarAtletas();
+        cadastrarMedalhas();
     }
+
+    private void cadastrarAtletas(){
+        int numero = in.nextInt();
+        while(numero != -1){
+            in.nextLine();
+            String nome = in.nextLine();
+            String pais = in.nextLine();
+            atleta = new Atleta(numero, nome, pais);
+            plantel.cadastraAtleta(atleta);
+            
+            if(plantel.consultaAtleta(nome) != null){
+                System.out.print("1:");
+            }
+
+            plantel.retornaAtleta(nome);
+            numero = in.nextInt();
+        }
+    }  
+
+    private void cadastrarMedalhas(){
+        int codigo = in.nextInt();
+        while(codigo != -1){
+            in.nextLine();
+            int tipo = in.nextInt();
+            boolean individual = in.nextBoolean();
+            in.nextLine();
+            String modalidade = in.nextLine();
+            medalha = new Medalha(codigo, tipo, individual, modalidade);
+
+            if(medalheiro.consultaMedalha(codigo) == null){
+                medalheiro.cadastraMedalha(medalha);
+                System.out.print("2:");
+                medalheiro.retornaMedalha(codigo);
+            }
+
+            codigo = in.nextInt();
+        }
+    }
+    
 }

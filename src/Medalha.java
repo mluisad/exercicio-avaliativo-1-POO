@@ -22,9 +22,25 @@ public class Medalha {
     public int getCodigo() {
         return codigo;
     }    
-    
+
+    public int getTipo() {
+        return tipo;
+    }
+
+    public boolean getIndividual(){
+		if (this.individual == true){ 
+			return true;
+		}
+		return false;
+	}
+
     public String getModalidade() {
         return modalidade;
     }
 
+
+    @Override
+    public String toString() {
+    return getCodigo() + "," + getTipo() + "," + getIndividual() + "," + getModalidade();
+    }
 }

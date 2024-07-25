@@ -34,4 +34,12 @@ public class Medalheiro {
         }        
         return consulta;
     }
+
+    public void retornaMedalha(int codigo){
+        for(Medalha m : medalha){
+            if(m.getCodigo() == codigo){
+                System.out.println(m.toString());
+            }
+        }
+    } 
 }

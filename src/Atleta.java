@@ -34,4 +34,12 @@ public class Atleta {
         return numero;
     }
 
+    public String getPais() {
+        return pais;
+    }
+
+    @Override
+    public String toString() {
+        return getNumero() + "," + getNome() + "," + getPais();
+    }
 }
