@@ -35,6 +35,7 @@ public class ACMESports {
     public void executar(){
         cadastrarAtletas();
         cadastrarMedalhas();
+        cadastrarMedalhasEAtletasCorrespondentes();
     }
 
     private void cadastrarAtletas(){
@@ -75,4 +76,20 @@ public class ACMESports {
         }
     }
     
+    private void cadastrarMedalhasEAtletasCorrespondentes(){
+        int codigo = in.nextInt();
+
+        while(codigo != -1){
+            int numero = in.nextInt();
+            Atleta atleta = plantel.consultaAtleta(numero);
+            Medalha medalha = medalheiro.consultaMedalha(codigo);
+
+            if(medalheiro.consultaMedalha(codigo) != null && plantel.consultaAtleta(numero) != null){
+                atleta.adicionaMedalha(medalha);
+                medalha.adicionaAtleta(atleta);
+                System.out.println("3:" + codigo + "," + numero);
+            }
+            codigo = in.nextInt();
+        }
+    }
 }
