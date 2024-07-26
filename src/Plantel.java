@@ -40,5 +40,13 @@ public class Plantel {
                 System.out.println(a.toString());
             }
         }
-    }  
+    }
+
+    public void retornaAtleta(int numero){
+        for(Atleta a : atletas){
+            if(a.getNumero() == numero){
+                System.out.println(a.toString());
+            }
+        }
+    }
 }
