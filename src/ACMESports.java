@@ -21,7 +21,7 @@ public class ACMESports {
         plantel = new Plantel();
         
         try{
-			BufferedReader streamEntrada = new BufferedReader(new FileReader("dadosin.txt"));
+			BufferedReader streamEntrada = new BufferedReader(new FileReader("dadosin3.txt"));
 			in = new Scanner(streamEntrada);
 			PrintStream streamSaida = new PrintStream(new File("dadosout.txt"), Charset.forName("UTF-8"));
 			System.setOut(streamSaida);
@@ -100,10 +100,11 @@ public class ACMESports {
 
         if(plantel.consultaAtleta(numero) == null) {
             System.out.println("4:Nenhum atleta encontrado.");
+        } else{
+            System.out.print("4:");
+            plantel.retornaAtleta(numero);
         }
 
-        System.out.print("4:");
-        plantel.retornaAtleta(numero);
     }
 
     public void mostrarDadosAtletaPorNome(){
@@ -112,8 +113,9 @@ public class ACMESports {
 
         if(plantel.consultaAtleta(nome) == null){
             System.out.println("5:Nenhum atleta encontrado.");
+        } else{
+            System.out.print("5:");
+            plantel.retornaAtleta(nome); 
         }
-        System.out.print("5:");
-        plantel.retornaAtleta(nome);
     }
 }
